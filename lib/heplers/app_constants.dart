@@ -1,0 +1,32 @@
+import 'package:flutter/material.dart';
+
+//colors
+final backgroundColor = Color(0xFF28363d);
+final primaryDarkColor = Color(0xFF323a41);
+final accentColor = Color(0xFFF9A333);
+final primaryColor = Color(0xFF3d4750);
+final usdBuy = 'usdBuy';
+final usdSell = 'usdSell';
+final euroBuy = 'euroBuy';
+final euroSell = 'euroSell';
+final rubBuy = 'rubBuy';
+final rubSell = 'rubSell';
+final increase = 'increase';
+final decrease = 'decrease';
+final currencyList = 'currencyList';
+final curCode = 'curCode';
+final curName = 'curName';
+final String currrencyListKey = 'currrencyListKey';
+final bitcoinAPI = 'https://api.coinmarketcap.com/v1/ticker/bitcoin/';
+final ratesAPI = 'http://cbu.uz/ru/arkhiv-kursov-valyut/json/';
+final newsAPI = 'http://kursvalut.uz/mobile_app_api/news_list';
+final banksAPI = 'http://kursvalut.uz/mobile_app_api/banks';
+final rateChangesAPI = 'http://kursvalut.uz/mobile_app_api/rate_changes';
+final rateChangesAPI2 = 'http://kursvalut.uz/mobile_app_api/rates';
+final euroDollarAPI = 'http://kursvalut.uz/mobile_app_api/rates/value';
+final centralBankAPI = 'http://kursvalut.uz/mobile_app_api/cbu/rates';
+final centralBank = 'Центральный банк';
+final halqBanki = 'Xalq banki';
+final ofb = 'OFB';
+final headerSize = 22.0;
+final drawerSize = 18.0;

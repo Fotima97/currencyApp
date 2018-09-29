@@ -1,0 +1,69 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter packages get
+
+## exception
+
+NoSuchMethodError: NoSuchMethodError: The getter 'isModule' was called on null.
+Receiver: null
+Tried calling: isModule
+
+```
+#0      Object.noSuchMethod (dart:core-patch/dart:core/object_patch.dart:46)
+#1      FlutterProject.ensureReadyForPlatformSpecificTooling (package:flutter_tools/src/project.dart:88)
+<asynchronous suspension>
+#2      PackagesGetCommand.runCommand (package:flutter_tools/src/commands/packages.dart:84)
+<asynchronous suspension>
+#3      FlutterCommand.verifyThenRunCommand (package:flutter_tools/src/runner/flutter_command.dart:347)
+#4      _asyncThenWrapperHelper.<anonymous closure> (dart:async-patch/dart:async/async_patch.dart:77)
+#5      _rootRunUnary (dart:async/zone.dart:1134)
+#6      _CustomZone.runUnary (dart:async/zone.dart:1031)
+#7      _FutureListener.handleValue (dart:async/future_impl.dart:129)
+#8      Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:638)
+#9      Future._propagateToListeners (dart:async/future_impl.dart:667)
+#10     Future._complete (dart:async/future_impl.dart:472)
+#11     _SyncCompleter.complete (dart:async/future_impl.dart:51)
+#12     _AsyncAwaitCompleter.complete.<anonymous closure> (dart:async-patch/dart:async/async_patch.dart:33)
+#13     _rootRun (dart:async/zone.dart:1126)
+#14     _CustomZone.run (dart:async/zone.dart:1023)
+#15     _CustomZone.bindCallback.<anonymous closure> (dart:async/zone.dart:949)
+#16     _microtaskLoop (dart:async/schedule_microtask.dart:41)
+#17     _startMicrotaskLoop (dart:async/schedule_microtask.dart:50)
+#18     _runPendingImmediateCallback (dart:isolate-patch/dart:isolate/isolate_patch.dart:113)
+#19     _RawReceivePortImpl._handleMessage (dart:isolate-patch/dart:isolate/isolate_patch.dart:166)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel master, v0.5.6-pre.122, on Microsoft Windows [Version 10.0.16299.431], locale en-US)
+    • Flutter version 0.5.6-pre.122 at c:\flutter
+    • Framework revision 84f5b1cb09 (4 days ago), 2018-07-02 17:20:26 -0700
+    • Engine revision 6fe748490d
+    • Dart version 2.0.0-dev.63.0.flutter-4c9689c1d2
+
+[✓] Android toolchain - develop for Android devices (Android SDK 27.0.3)
+    • Android SDK at C:\Users\Fotima\AppData\Local\Android\sdk
+    • Android NDK location not configured (optional; useful for native profiling support)
+    • Platform android-27, build-tools 27.0.3
+    • Java binary at: C:\Program Files\Android\Android Studio\jre\bin\java
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-915-b01)
+    • All Android licenses accepted.
+
+[✓] Android Studio (version 3.0)
+    • Android Studio at C:\Program Files\Android\Android Studio
+    • Flutter plugin version 23.2.1
+    • Dart plugin version 171.4424
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-915-b01)
+
+[✓] VS Code, 64-bit edition (version 1.24.1)
+    • VS Code at C:\Program Files\Microsoft VS Code
+    • Flutter extension version 2.15.0
+
+[✓] Connected devices (1 available)
+    • Android SDK built for x86 64 • emulator-5554 • android-x64 • Android 6.0 (API 23) (emulator)
+
+• No issues found!
+```
