@@ -25,10 +25,27 @@ class _CentralBankPageState extends State<CentralBankPage> {
     // fetchAllData();
   }
 
-  List<Currency> parseCurrencies(String responseBody) {
-    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+  // List<Currency> parseCurrencies(String responseBody) {
+  //   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
 
-    return parsed.map<Currency>((json) => Currency.fromJson(json)).toList();
+  //   return parsed.map<Currency>((json) => Currency.fromJson(json)).toList();
+  // }
+  List<Currency> parseCurrencies(String responseBody) {
+    List<dynamic> parsed = json.decode(responseBody);
+    var list = new List<dynamic>();
+    var currencyList;
+    try {
+      for (int i = 0; i < parsed.length; i++) {
+        if (parsed[i].runtimeType != parsed.runtimeType) {
+          //print(parsed[i].runtimeType);
+          list.add(parsed[i]);
+        }
+      }
+      currencyList = list.map<Currency>((json) => Currency.fromJson(json));
+    } catch (e) {
+      print(e);
+    }
+    return currencyList.toList();
   }
 
   Future<List<Currency>> fetchCurrencies(http.Client client) async {

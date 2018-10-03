@@ -34,8 +34,11 @@ class _MyHomePageState extends State<MyHomePage> {
 // A function that will convert a response body into a List<Photo>
   List<Bitcoin> parseBitcoin(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-
-    return parsed.map<Bitcoin>((json) => Bitcoin.fromJson(json)).toList();
+    try {
+      return parsed.map<Bitcoin>((json) => Bitcoin.fromJson(json)).toList();
+    } catch (e) {
+      print('Bitcoin: $e');
+    }
   }
 
   Future<List<Bitcoin>> fetchBitcoin(http.Client client) async {
@@ -47,12 +50,21 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   List<Currency> parseCurrencies(String responseBody) {
-    final parsed = json.decode(responseBody);
+    List<dynamic> parsed = json.decode(responseBody);
+    var list=new List<dynamic>();
+    var currencyList;
     try {
-      return parsed.map<Currency>((json) => Currency.fromJson(json)).toList();
+      for (int i = 0; i < parsed.length; i++) {
+        if (parsed[i].runtimeType != parsed.runtimeType) {
+          //print(parsed[i].runtimeType);
+          list.add(parsed[i]);
+        }
+      }
+      currencyList = list.map<Currency>((json) => Currency.fromJson(json));
     } catch (e) {
       print(e);
     }
+    return currencyList.toList();
   }
 
   Future<List<Currency>> fetchCurrencies(http.Client client) async {
@@ -60,7 +72,6 @@ class _MyHomePageState extends State<MyHomePage> {
       final response = await client.get(ratesAPI);
       String body = utf8.decode(response.bodyBytes);
       var text = response.bodyBytes;
-
       return parseCurrencies(body);
       // return compute(parseCurrencies, response.body);
     } catch (e) {
