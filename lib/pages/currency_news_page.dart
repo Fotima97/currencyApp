@@ -11,7 +11,6 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 
 class CurrencyNews extends StatefulWidget {
   CurrencyNews({Key key, this.title}) : super(key: key);
@@ -143,19 +142,28 @@ class _CurrencyNewsState extends State<CurrencyNews> {
         var usd = usdCentralBankList[i];
         futureCurrency =
             new FutureCurrency(usd.date.substring(5), double.parse(usd.cost));
+            if(usdCurrencyList.length<8){
         usdCurrencyList.add(futureCurrency);
+
+            }
       }
       for (var i = 0; i < euroCentralBankList.length; i++) {
         var euro = euroCentralBankList[i];
         futureCurrency =
             new FutureCurrency(euro.date.substring(5), double.parse(euro.cost));
+            if(euroCurrencyList.length<8){
         euroCurrencyList.add(futureCurrency);
+
+            }
       }
       for (var i = 0; i < rubCentralBankList.length; i++) {
         var rub = rubCentralBankList[i];
         futureCurrency =
             new FutureCurrency(rub.date.substring(5), double.parse(rub.cost));
+            if(rubCurrencyList.length<8){
         rubCurrencyList.add(futureCurrency);
+
+            }
       }
     }
   }
@@ -170,12 +178,14 @@ class _CurrencyNewsState extends State<CurrencyNews> {
       ),
       new Series<FutureCurrency, String>(
         id: 'EUR',
+
         domainFn: (FutureCurrency cost, _) => cost.date,
         measureFn: (FutureCurrency cost, _) => cost.cost,
         data: euroCurrencyList,
       ),
       new Series<FutureCurrency, String>(
         id: 'RUB',
+
         domainFn: (FutureCurrency cost, _) => cost.date,
         measureFn: (FutureCurrency cost, _) => cost.cost,
         data: rubCurrencyList,
